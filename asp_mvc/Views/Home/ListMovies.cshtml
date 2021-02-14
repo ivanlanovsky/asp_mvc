@@ -1,0 +1,42 @@
+﻿@model IEnumerable<asp_mvc.Models.Movie>
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-body" style="margin: 20px">
+        <h4>Here is the list of all movies</h4>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Genre</th>
+                    <th>Country</th>
+                    <th>Restriction</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (asp_mvc.Models.Movie m in Model)
+                {
+                <tr>
+                    <td>@m.Name</td>
+                    <td>@m.Description</td>
+                    <td>@GenreRepo.Genres.Where(r => r.id == m.Genre).ToList()[0].Name</td>
+                    <td>@m.Country</td>
+                    <td>@m.Restriction</td>
+                    <td>@m.id</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

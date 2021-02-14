@@ -1,0 +1,60 @@
+﻿@model asp_mvc.Models.Movie
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movie form</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel panel-success" style="margin: 20px">
+        <div class="panel-heading text-center"><h4>Add new movie</h4></div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="MovieForm" method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="form-group">
+                    <label asp-for="Name">Movie name:</label>
+                    <input class="form-control" asp-for="Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description:</label>
+                    <input class="form-control" asp-for="Description" />
+                </div>
+                <div class="form-group">
+                    <laЬel>Movie genre:</laЬel>
+                    <select class="form-control" asp-for="id">
+                        @foreach (asp_mvc.Models.Genre g in GenreRepo.Genres)
+                        {
+                            <option value=@g.id>@g.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Country">Origin country:</label>
+                    <input class="form-control" asp-for="Country" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Restriction">Age restriction</label>
+                    <input class="form-control" asp-for="Restriction" />
+                </div>
+                <div class="form-group">
+                    <laЬel>Movie id</laЬel>
+                    <select class="form-control" asp-for="id">
+                        <option value=@MovieRepo.Movies.Count()>auto id</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">
+                        Submit movie
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+

@@ -1,0 +1,36 @@
+﻿body {
+}
+
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.columns {
+    display: inline-flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.flex-child {
+    min-width: 30%;
+    margin: 20px;
+    text-align:center;
+}

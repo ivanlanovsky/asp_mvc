@@ -1,0 +1,42 @@
+﻿@model asp_mvc.Models.Genre
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Genre form</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel panel-success" style="margin: 20px">
+        <div class="panel-heading text-center"><h4>Add new genre</h4></div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="GenreForm" method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="form-group">
+                    <label asp-for="Name">Genre's name:</label>
+                    <input class="form-control" asp-for="Name" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description">Description:</label>
+                    <input class="form-control" asp-for="Description" />
+                </div>
+                <div class="form-group">
+                    <laЬel>Genre id</laЬel>
+                    <select class="form-control" asp-for="id">
+                        <option value=@GenreRepo.Genres.Count()>auto id</option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">
+                        Submit genre
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

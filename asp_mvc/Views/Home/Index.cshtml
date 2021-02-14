@@ -1,0 +1,37 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div class="columns">
+        <div class="flex-child">
+            <h3>Genres: @GenreRepo.Genres.Count()</h3>
+            <a class="btn btn-primary" asp-action="ListGenres">List of all genres</a>
+            <br>
+            <a asp-action="GenreForm">add new</a>
+        </div>
+        <div class="flex-child">
+            <h3>Movies: @MovieRepo.Movies.Count()</h3>
+            <a class="btn btn-primary" asp-action="ListMovies">List of all movies</a>
+            <br>
+            <a asp-action="MovieForm">add new</a>
+        </div>
+        <div class="flex-child">
+            <h3>Shows: @ShowRepo.Shows.Count()</h3>
+            <a class="btn btn-primary" asp-action="ListShows">List of all shows</a>
+            <br>
+            <a asp-action="ShowForm">add new</a>
+        </div>
+            
+    </div>
+    
+</body>
+</html>
