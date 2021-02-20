@@ -6,15 +6,24 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace asp_mvc.Controllers
 {
     public class HomeController : Controller
     {
 
+        private ApplicationContext db;
+        public HomeController(ApplicationContext context)
+        {
+            db = context;
+        }
+
         public ViewResult Index()
         {
-            //ViewBag.genreCount = Genres.length;
+            ViewBag.counts = new List<int>() { db.Genres.ToList().Count,
+                                               db.Movies.ToList().Count,
+                                               db.Shows.ToList().Count};
             return View();
         }
         [HttpGet]
@@ -22,43 +31,74 @@ namespace asp_mvc.Controllers
         {
             return View();
         }
+
+        public async Task<IActionResult> ListGenres()
+        {
+            return View(await db.Genres.ToListAsync());
+        }
+
         [HttpPost]
-        public ViewResult GenreForm(Genre genre)
+        public async Task<IActionResult> GenreForm(Genre genre)
         {
             if (ModelState.IsValid)
             {
-                GenreRepo.AddGenre(genre);
-                return View("Index");
+                db.Genres.Add(genre);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View();
-
         }
 
-        public ViewResult ListGenres()
-        {
-            return View(GenreRepo.Genres);
-        }
+
 
         [HttpGet]
         public ViewResult MovieForm()
         {
+            ViewBag.Genres = db.Genres.ToList<Genre>();
             return View();
         }
+
+        public async Task<IActionResult> ListMovies()
+        {
+            ViewBag.Genres = db.Genres.ToList<Genre>();
+            return View(await db.Movies.ToListAsync());
+        }
+
         [HttpPost]
-        public ViewResult MovieForm(Movie movie)
+        public async Task<IActionResult> MovieForm(Movie movie)
         {
             if (ModelState.IsValid)
             {
-                MovieRepo.AddMovie(movie);
-                return View("Index");
+                db.Movies.Add(movie);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
             }
             return View();
-
         }
 
-        public ViewResult ListMovies()
+        [HttpGet]
+        public ViewResult ShowForm()
         {
-            return View(MovieRepo.Movies);
+            ViewBag.Movies = db.Movies.ToList<Movie>();
+            return View();
+        }
+
+        public async Task<IActionResult> ListShows()
+        {
+            ViewBag.Movies = db.Movies.ToList<Movie>();
+            return View(await db.Shows.ToListAsync());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ShowForm(Show show)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Shows.Add(show);
+                await db.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            return View();
         }
     }
 }

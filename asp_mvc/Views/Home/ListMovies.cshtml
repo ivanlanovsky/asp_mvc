@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<asp_mvc.Models.Movie>
 @{
+    List<Genre> Genres = ViewBag.Genres;
     Layout = null;
 }
 <!DOCTYPE html>
@@ -29,7 +30,7 @@
                 <tr>
                     <td>@m.Name</td>
                     <td>@m.Description</td>
-                    <td>@GenreRepo.Genres.Where(r => r.id == m.Genre).ToList()[0].Name</td>
+                    <td>@Genres.Where(genre => genre.id == m.id).ElementAt(0).Name</td>
                     <td>@m.Country</td>
                     <td>@m.Restriction</td>
                     <td>@m.id</td>

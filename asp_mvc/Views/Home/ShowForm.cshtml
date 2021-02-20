@@ -1,0 +1,51 @@
+﻿@model asp_mvc.Models.Show
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movie form</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel panel-success" style="margin: 20px">
+        <div class="panel-heading text-center"><h4>Add new show</h4></div>
+        <div class="panel-body">
+            <form class="p-a-1" asp-action="ShowForm" method="post">
+                <div asp-validation-summary="All"></div>
+                <div class="form-group">
+                    <label asp-for="Date">Show date:</label>
+                    <input class="form-control" asp-for="Date" />
+                </div>
+                <div class="form-group">
+                    <laЬel>Movie:</laЬel>
+                    <select class="form-control" asp-for="Movie">
+                        @foreach (asp_mvc.Models.Movie m in ViewBag.Movies)
+                        {
+                            <option value=@m.id>@m.Name</option>
+                        }
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Duration">Show duration:</label>
+                    <input class="form-control" asp-for="Duration" />
+                </div>
+                @*<div class="form-group">
+                    <laЬel>Movie id</laЬel>
+                    <select class="form-control" asp-for="id">
+                        <option value=@ShowRepo.Shows.Count()>auto id</option>
+                    </select>
+                </div>*@
+                <div class="text-center">
+                    <button class="btn btn-primary" type="submit">
+                        Submit movie
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

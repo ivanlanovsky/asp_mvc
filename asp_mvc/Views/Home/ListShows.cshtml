@@ -1,0 +1,39 @@
+﻿@model IEnumerable<asp_mvc.Models.Show>
+@{
+    List<Movie> Movies = ViewBag.Movies;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shows</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-body" style="margin: 20px">
+        <h4>Here is the list of all shows</h4>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Movie</th>
+                    <th>Duration</th>
+                    <th>Id</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (asp_mvc.Models.Show s in Model)
+                {
+                <tr>
+                    <td>@s.Date.ToString()</td>
+                    <td>@Movies.Where(movie => movie.id == s.id).ElementAt(0).Name</td>
+                    <td>@s.Duration</td>
+                    <td>@s.id</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

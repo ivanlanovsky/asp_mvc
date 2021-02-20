@@ -13,19 +13,19 @@
 <body>
     <div class="columns">
         <div class="flex-child">
-            <h3>Genres: @GenreRepo.Genres.Count()</h3>
+            <h3>Genres: @ViewBag.counts[0]</h3>
             <a class="btn btn-primary" asp-action="ListGenres">List of all genres</a>
             <br>
             <a asp-action="GenreForm">add new</a>
         </div>
         <div class="flex-child">
-            <h3>Movies: @MovieRepo.Movies.Count()</h3>
+            <h3>Movies: @ViewBag.counts[1]</h3>
             <a class="btn btn-primary" asp-action="ListMovies">List of all movies</a>
             <br>
             <a asp-action="MovieForm">add new</a>
         </div>
         <div class="flex-child">
-            <h3>Shows: @ShowRepo.Shows.Count()</h3>
+            <h3>Shows: @ViewBag.counts[2]</h3>
             <a class="btn btn-primary" asp-action="ListShows">List of all shows</a>
             <br>
             <a asp-action="ShowForm">add new</a>
