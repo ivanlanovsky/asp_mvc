@@ -11,9 +11,6 @@ namespace asp_mvc.Models
         [Required(ErrorMessage = "Please enter movie name")]
         public String Name { get; set; }
 
-        [Required(ErrorMessage = "Please select movie genre")]
-        public int Genre { get; set; }
-
         [Required(ErrorMessage = "Please enter origin country")]
         public String Country { get; set; }
 
@@ -22,7 +19,11 @@ namespace asp_mvc.Models
         [Required(ErrorMessage = "Please enter description")]
         public String Description { get; set; }
 
-        public int id { get; set; }
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Please select movie genre")]
+        public int GenreId { get; set; }
+        public Genre Genre { get; set; }
 
     }
 }

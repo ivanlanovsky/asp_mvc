@@ -25,11 +25,11 @@
                     <input class="form-control" asp-for="Description" />
                 </div>
                 <div class="form-group">
-                    <laЬel>Movie genre:</laЬel>
-                    <select class="form-control" asp-for="Genre">
+                    <label>Movie genre:</label>
+                    <select class="form-control" asp-for="GenreId">
                         @foreach (asp_mvc.Models.Genre g in ViewBag.Genres)
                         {
-                            <option value=@g.id>@g.Name</option>
+                            <option value=@g.Id>@g.Name</option>
                         }
                     </select>
                 </div>

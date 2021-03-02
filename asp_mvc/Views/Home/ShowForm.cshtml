@@ -22,10 +22,10 @@
                 </div>
                 <div class="form-group">
                     <laЬel>Movie:</laЬel>
-                    <select class="form-control" asp-for="Movie">
+                    <select class="form-control" asp-for="MovieId">
                         @foreach (asp_mvc.Models.Movie m in ViewBag.Movies)
                         {
-                            <option value=@m.id>@m.Name</option>
+                            <option value=@m.Id>@m.Name</option>
                         }
                     </select>
                 </div>

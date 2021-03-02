@@ -1,0 +1,24 @@
+﻿@model asp_mvc.Models.Show
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+    <body>
+        <div style="justify-content:center">
+            <img src="~/images/placeholder.png" width="500" height="300"/>
+        </div>
+        <div style="max-width:80%">
+                <p>Title: @Model.Movie.Name
+                <p>When: @Model.Date
+                <p>Genre: @Model.Movie.Genre.Name
+                <p>Restriction: @Model.Movie.Restriction+
+                <p>Description: @Model.Movie.Description
+        </div>
+    </body>
+</html>

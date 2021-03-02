@@ -30,10 +30,10 @@
                 <tr>
                     <td>@m.Name</td>
                     <td>@m.Description</td>
-                    <td>@Genres.Where(genre => genre.id == m.id).ElementAt(0).Name</td>
+                    <td>@m.Genre.Name</td>
                     <td>@m.Country</td>
                     <td>@m.Restriction</td>
-                    <td>@m.id</td>
+                    <td>@m.Id</td>
                 </tr>
                 }
             </tbody>

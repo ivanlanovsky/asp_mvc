@@ -21,11 +21,23 @@ namespace asp_mvc.Controllers
 
         public ViewResult Index()
         {
-            ViewBag.counts = new List<int>() { db.Genres.ToList().Count,
-                                               db.Movies.ToList().Count,
-                                               db.Shows.ToList().Count};
-            return View();
+            ViewBag.counts = new List<int>() { db.Genres.Count(),
+                                               db.Movies.Count(),
+                                               db.Shows.Count()};
+            return View(db.Shows.ToList());
         }
+
+        public ViewResult Show(int Id)
+        {
+            Show show = db.Shows.Find(Id);
+            Movie movie = db.Movies.Find(show.MovieId);
+            movie.Genre = db.Genres.Find(movie.GenreId);
+            show.Movie = movie;
+
+            return View(show);
+        }
+
+
         [HttpGet]
         public ViewResult GenreForm()
         {
@@ -58,10 +70,22 @@ namespace asp_mvc.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ListMovies()
+        public IActionResult ListMovies()
         {
-            ViewBag.Genres = db.Genres.ToList<Genre>();
-            return View(await db.Movies.ToListAsync());
+            var movies = db.Movies.Join(db.Genres, 
+            m => m.GenreId, 
+            g => g.Id, 
+            (m, g) => new Movie
+            {
+                Genre = g,
+                Name = m.Name,
+                Country = m.Country,
+                Description = m.Description,
+                Restriction = m.Restriction,
+                Id = m.Id
+            });
+            //ViewBag.Genres = db.Genres.ToList<Genre>();
+            return View(movies);
         }
 
         [HttpPost]
@@ -83,10 +107,20 @@ namespace asp_mvc.Controllers
             return View();
         }
 
-        public async Task<IActionResult> ListShows()
+        public  IActionResult ListShows()
         {
-            ViewBag.Movies = db.Movies.ToList<Movie>();
-            return View(await db.Shows.ToListAsync());
+            var shows = db.Shows.Join(db.Movies, // второй набор
+            s => s.MovieId, // свойство-селектор объекта из первого набора
+            m => m.Id, // свойство-селектор объекта из второго набора
+            (s, m) => new Show
+            {
+                Movie = m,
+                Date = s.Date,
+                Duration = s.Duration,
+                Id = s.Id
+            });
+            //ViewBag.Movies = db.Movies.Select(m => m.Name);
+            return View(shows);
         }
 
         [HttpPost]

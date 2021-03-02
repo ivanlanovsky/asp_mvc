@@ -1,4 +1,5 @@
-﻿@{
+﻿@model IEnumerable<asp_mvc.Models.Show>
+@{
     Layout = null;
 }
 
@@ -11,6 +12,17 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
+    <div style="overflow-x:scroll; overflow-y:hidden; white-space:nowrap;">
+        @foreach (asp_mvc.Models.Show s in Model)
+        {
+            <div style="display:inline-flex; margin:5px">
+                <a href="~/Home/Show/@s.Id"><img src="~/images/placeholder.png" height="100" width="120" /></a>
+            </div>
+        }
+
+    </div>
+
+
     <div class="columns">
         <div class="flex-child">
             <h3>Genres: @ViewBag.counts[0]</h3>
@@ -30,8 +42,8 @@
             <br>
             <a asp-action="ShowForm">add new</a>
         </div>
-            
+
     </div>
-    
+
 </body>
 </html>
