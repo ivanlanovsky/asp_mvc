@@ -11,40 +11,29 @@ using Microsoft.EntityFrameworkCore;
 
 namespace asp_mvc.Controllers
 {
-    public class ShowController : Controller
+    public class MovieController : Controller
     {
 
         private ApplicationContext db;
-        public ShowController(ApplicationContext context)
+        public MovieController(ApplicationContext context)
         {
             db = context;
         }
 
 
-        // GET: ShowController/Details/5
-        public ActionResult Details(int id)
-        {
-            Show show = db.Shows.Find(id);
-            Movie movie = db.Movies.Find(show.MovieId);
-            movie.Genre = db.Genres.Find(movie.GenreId);
-            show.Movie = movie;
-
-            return View("Show", show);
-        }
-
         [HttpGet]
-        public IActionResult AddNew()
+        public ViewResult AddNew()
         {
-            ViewBag.Movies = db.Movies.ToList<Movie>();
-            return View("ShowForm");
+            ViewBag.Genres = db.Genres.ToList<Genre>();
+            return View("MovieForm");
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Show show)
+        public async Task<IActionResult> Create(Movie movie)
         {
             if (ModelState.IsValid)
             {
-                db.Shows.Add(show);
+                db.Movies.Add(movie);
                 await db.SaveChangesAsync();
                 return Redirect("~/Home/Index");
             }
@@ -53,22 +42,23 @@ namespace asp_mvc.Controllers
 
         public IActionResult ListAll()
         {
-            var shows = db.Shows.Join(db.Movies, 
-            s => s.MovieId, 
-            m => m.Id, 
-            (s, m) => new Show
-            {
-                Movie = m,
-                Date = s.Date,
-                Duration = s.Duration,
-                Id = s.Id
-            });
-            
-            return View("ListShows", shows);
+            var movies = db.Movies.Join(db.Genres,
+             m => m.GenreId,
+             g => g.Id,
+             (m, g) => new Movie
+             {
+                 Genre = g,
+                 Name = m.Name,
+                 Country = m.Country,
+                 Description = m.Description,
+                 Restriction = m.Restriction,
+                 Id = m.Id
+             });
+
+            return View("ListMovies", movies);
         }
 
 
-        // POST: ShowController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, IFormCollection collection)
@@ -83,7 +73,6 @@ namespace asp_mvc.Controllers
             }
         }
 
-
         // POST: ShowController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -91,10 +80,10 @@ namespace asp_mvc.Controllers
         {
             try
             {
-                Show show = db.Shows.Find(id);
-                db.Shows.Remove(show);
+                Movie movie = db.Movies.Find(id);
+                db.Movies.Remove(movie);
                 db.SaveChanges();
-                return Redirect("~/Show/ListAll");
+                return Redirect("~/Movie/ListAll");
             }
             catch
             {

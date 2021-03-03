@@ -17,7 +17,7 @@
         @foreach (asp_mvc.Models.Show s in Model)
         {
             <div style="display:inline-flex; margin:5px">
-                <a href="~/Home/Show/@s.Id"><img src="~/images/placeholder.png" height="200" width="240" /></a>
+                <a href="~/Show/Details/@s.Id"><img src="~/images/placeholder.png" height="200" width="240" /></a>
             </div>
         }
         </div>
@@ -28,21 +28,21 @@
     <div style="justify-content:center; display:flex; max-width:100%">
         <div class="flex-child">
             <h3>Genres: @ViewBag.counts[0]</h3>
-            <a class="btn btn-primary" asp-action="ListGenres">List of all genres</a>
+            <a class="btn btn-primary" href="~/Genre/ListAll">List of all genres</a>
             <br>
-            <a asp-action="GenreForm">add new</a>
+            <a href="~/Genre/AddNew">add new</a>
         </div>
         <div class="flex-child">
             <h3>Movies: @ViewBag.counts[1]</h3>
-            <a class="btn btn-primary" asp-action="ListMovies">List of all movies</a>
+            <a class="btn btn-primary" href="~/Movie/ListAll">List of all movies</a>
             <br>
-            <a asp-action="MovieForm">add new</a>
+            <a href="~/Movie/AddNew">add new</a>
         </div>
         <div class="flex-child">
             <h3>Shows: @ViewBag.counts[2]</h3>
-            <a class="btn btn-primary" asp-action="ListShows">List of all shows</a>
+            <a class="btn btn-primary" href="~/Show/ListAll">List of all shows</a>
             <br>
-            <a asp-action="ShowForm">add new</a>
+            <a href="~/Show/AddNew">add new</a>
         </div>
 
     </div>
