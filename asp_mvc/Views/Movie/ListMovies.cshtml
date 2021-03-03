@@ -22,6 +22,7 @@
                     <th>Country</th>
                     <th>Restriction</th>
                     <th>Id</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -34,6 +35,11 @@
                     <td>@m.Country</td>
                     <td>@m.Restriction</td>
                     <td>@m.Id</td>
+                    <td>
+                        <form action="~/Movie/Delete/@m.Id" method="post">
+                            <input type="submit" value="Delete" />
+                        </form>
+                    </td>
                 </tr>
                 }
             </tbody>

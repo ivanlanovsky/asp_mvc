@@ -87,14 +87,14 @@ namespace asp_mvc.Controllers
         // POST: ShowController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
                 Show show = db.Shows.Find(id);
                 db.Shows.Remove(show);
                 db.SaveChanges();
-                return Redirect("~/Show/ListAll");
+                return RedirectToAction("ListAll");
             }
             catch
             {

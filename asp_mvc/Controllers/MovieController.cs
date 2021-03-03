@@ -73,10 +73,9 @@ namespace asp_mvc.Controllers
             }
         }
 
-        // POST: ShowController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(int id)
         {
             try
             {
