@@ -12,18 +12,20 @@
     <link rel="stylesheet" href="/css/style.css" />
 </head>
 <body>
-    <div style="overflow-x:scroll; overflow-y:hidden; white-space:nowrap;">
+    <div style="overflow-x:scroll; overflow-y:hidden; white-space:nowrap; justify-content:center; display:flex">
+        <div style="display: inline-flex">
         @foreach (asp_mvc.Models.Show s in Model)
         {
             <div style="display:inline-flex; margin:5px">
-                <a href="~/Home/Show/@s.Id"><img src="~/images/placeholder.png" height="100" width="120" /></a>
+                <a href="~/Home/Show/@s.Id"><img src="~/images/placeholder.png" height="200" width="240" /></a>
             </div>
         }
+        </div>
 
     </div>
 
 
-    <div class="columns">
+    <div style="justify-content:center; display:flex; max-width:100%">
         <div class="flex-child">
             <h3>Genres: @ViewBag.counts[0]</h3>
             <a class="btn btn-primary" asp-action="ListGenres">List of all genres</a>

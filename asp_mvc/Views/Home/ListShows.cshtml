@@ -21,6 +21,7 @@
                     <th>Date</th>
                     <th>Duration</th>
                     <th>Id</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -31,6 +32,12 @@
                     <td>@s.Date.ToString()</td>
                     <td>@s.Duration</td>
                     <td>@s.Id</td>
+                    <td>
+                        <form action="~/Show/Delete/@s.Id" method="post">
+                            <input type="submit" value="Delete" />
+                        </form>
+
+                    </td>
                 </tr>
                 }
             </tbody>

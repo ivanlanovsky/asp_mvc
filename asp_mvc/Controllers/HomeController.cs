@@ -134,5 +134,12 @@ namespace asp_mvc.Controllers
             }
             return View();
         }
+        [HttpPost("{id}")]
+        public ViewResult DeleteShow(int Id)
+        {
+            Show show = db.Shows.Find(Id);
+            db.Shows.Remove(show);
+            return View("ListShows");
+        }
     }
 }

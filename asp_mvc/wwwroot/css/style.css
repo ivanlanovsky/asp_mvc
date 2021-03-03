@@ -29,10 +29,7 @@
     white-space: nowrap;
 }
 
-.columns {
-    display: inline-flex;
-    justify-content: center;
-}
+
 
 .flex-child {
     min-width: 30%;
