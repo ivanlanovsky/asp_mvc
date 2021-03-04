@@ -28,17 +28,19 @@
                             <option value=@m.Id>@m.Name</option>
                         }
                     </select>
+                    <laЬel>Hall:</laЬel>
+                    <select class="form-control" asp-for="HallId">
+                        @foreach (asp_mvc.Models.Hall h in asp_mvc.Models.ExistingHalls.AllHalls)
+                        {
+                            <option value=@h.Id>@h.Name</option>
+                        }
+                    </select>
                 </div>
                 <div class="form-group">
                     <label asp-for="Duration">Show duration:</label>
                     <input class="form-control" asp-for="Duration" />
                 </div>
-                @*<div class="form-group">
-                    <laЬel>Movie id</laЬel>
-                    <select class="form-control" asp-for="id">
-                        <option value=@ShowRepo.Shows.Count()>auto id</option>
-                    </select>
-                </div>*@
+                
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">
                         Submit movie

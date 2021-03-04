@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<asp_mvc.Models.Show>
 @{
-    List<Movie> Movies = ViewBag.Movies;
-    Layout = null;
 }
 <!DOCTYPE html>
 <html>
@@ -20,6 +18,7 @@
                     <th>Movie</th>
                     <th>Date</th>
                     <th>Duration</th>
+                    <th>Hall</th>
                     <th>Id</th>
                     <th></th>
                 </tr>
@@ -31,6 +30,7 @@
                     <td>@s.Movie.Name</td>
                     <td>@s.Date.ToString()</td>
                     <td>@s.Duration</td>
+                    <td>@asp_mvc.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
                     <td>@s.Id</td>
                     <td>
                         <form action="~/Show/Delete/@s.Id" method="post">

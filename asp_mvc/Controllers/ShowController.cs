@@ -53,15 +53,16 @@ namespace asp_mvc.Controllers
 
         public IActionResult ListAll()
         {
-            var shows = db.Shows.Join(db.Movies, 
-            s => s.MovieId, 
-            m => m.Id, 
+            var shows = db.Shows.Join(db.Movies,
+            s => s.MovieId,
+            m => m.Id,
             (s, m) => new Show
             {
                 Movie = m,
                 Date = s.Date,
                 Duration = s.Duration,
-                Id = s.Id
+                Id = s.Id,
+                HallId = s.HallId
             });
             
             return View("ListShows", shows);

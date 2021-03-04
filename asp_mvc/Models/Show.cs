@@ -17,6 +17,9 @@ namespace asp_mvc.Models
         public int Duration { get; set; }
         public int Id { get; set; }
 
+        [Required(ErrorMessage = "Please select cinema hall")]
+        public int HallId { get; set; }
+
         [Required(ErrorMessage = "Please select movie")]
         public int MovieId { get; set; }
         public Movie Movie { get; set; }
