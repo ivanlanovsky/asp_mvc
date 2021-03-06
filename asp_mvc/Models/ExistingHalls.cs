@@ -14,10 +14,10 @@ namespace asp_mvc.Models
         {
             AllHalls = new List<Hall>();
             Hall hall1 = new Hall(1, "Green"); 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 hall1.Seats.Add(new List<Seat>());
-                for (int j = 1; j < 6; j++)
+                for (int j = 1; j < 7; j++)
                 {
                     hall1.Seats[i].Add(new Seat(i + 1, j));
                 }  

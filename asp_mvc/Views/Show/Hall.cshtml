@@ -1,0 +1,42 @@
+﻿@model asp_mvc.Models.Hall
+@{
+    Layout = null;
+    int n = 0;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div style="justify-content:right; display: grid">
+        <br>
+        <div style="border: 3px solid blue; margin-top:50px; 
+                    margin-bottom:100px; margin-right: 100px">
+        </div>
+        <br>
+        <br>
+        @foreach (List<Seat> row in Model.Seats)
+        {
+        <div style="justify-content:center; margin-right: 100px">
+            @foreach (Seat seat in row)
+            {
+                {
+                    n += 1;
+                }
+            <div style="display:inline-grid; text-align:center;
+                        border: 1px solid; height: 50px; 
+                        width: 70px; margin: 15px">
+                <h3><label>@n</label> <input type="checkbox" value=seat /></h3>
+            </div>
+            }
+        </div>
+         <br>
+         }
+    </div>
+
+</body>
+</html>

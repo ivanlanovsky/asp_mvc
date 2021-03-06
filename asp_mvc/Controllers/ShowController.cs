@@ -68,6 +68,16 @@ namespace asp_mvc.Controllers
             return View("ListShows", shows);
         }
 
+        public IActionResult Hall(int id)
+        {
+            Hall hall = ExistingHalls.AllHalls.Find(h => h.Id == id);
+            if (hall == null)
+            {
+                return NotFound();
+            }
+            return View(hall);
+        }
+
 
         // POST: ShowController/Edit/5
         [HttpPost]

@@ -77,3 +77,4 @@ C:\Users\owner\source\repos\asp_mvc\asp_mvc\obj\Debug\net5.0\Razor\Views\Movie\L
 C:\Users\owner\source\repos\asp_mvc\asp_mvc\obj\Debug\net5.0\Razor\Views\Movie\MovieForm.cshtml.g.cs
 C:\Users\owner\source\repos\asp_mvc\asp_mvc\obj\Debug\net5.0\Razor\Views\Genre\GenreForm.cshtml.g.cs
 C:\Users\owner\source\repos\asp_mvc\asp_mvc\obj\Debug\net5.0\Razor\Views\Genre\ListGenres.cshtml.g.cs
+C:\Users\owner\source\repos\asp_mvc\asp_mvc\obj\Debug\net5.0\Razor\Views\Show\Hall.cshtml.g.cs
