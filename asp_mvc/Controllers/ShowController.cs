@@ -14,7 +14,7 @@ namespace asp_mvc.Controllers
     public class ShowController : Controller
     {
 
-        private ApplicationContext db;
+        private readonly ApplicationContext db;
         public ShowController(ApplicationContext context)
         {
             db = context;

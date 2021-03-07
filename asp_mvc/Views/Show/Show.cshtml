@@ -16,7 +16,7 @@
     <div style="max-width:80%">
         <p>Title: @Model.Movie.Name
         <p>When: @Model.Date
-        <p>Where: <a href="~/Show/Hall/@Model.HallId">@asp_mvc.Models.ExistingHalls.AllHalls.Find(h => h.Id == Model.HallId).Name Hall</a>
+        <p>Where: <a href="~/Show/Hall/@Model.HallId">@asp_mvc.Models.ExistingHalls.AllHalls.Find(h => h.Id == Model.HallId).Name Hall </a>
         <p>Genre: @Model.Movie.Genre.Name
         <p>Restriction: @Model.Movie.Restriction+
         <p>Description: @Model.Movie.Description

@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,16 +9,19 @@ using Microsoft.Extensions.Logging;
 using asp_mvc.Models;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Hosting;
 
 namespace asp_mvc.Controllers
 {
     public class MovieController : Controller
     {
 
-        private ApplicationContext db;
-        public MovieController(ApplicationContext context)
+        private readonly ApplicationContext db;
+        private readonly IWebHostEnvironment webHostEnvironment;
+        public MovieController(ApplicationContext context, IWebHostEnvironment hostEnvironment)
         {
             db = context;
+            webHostEnvironment = hostEnvironment;
         }
 
 
@@ -29,15 +33,43 @@ namespace asp_mvc.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Movie movie)
+        public async Task<IActionResult> Create(MovieModel mdata)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                db.Movies.Add(movie);
-                await db.SaveChangesAsync();
-                return Redirect("~/Home/Index");
+                RedirectToAction("AddNew");
             }
-            return View();
+            string uniqueFileName = UploadedFile(mdata.Image);
+            Movie movie = new Movie
+            {
+                Name = mdata.Name,
+                Country = mdata.Country,
+                Restriction = mdata.Restriction,
+                Description = mdata.Description,
+                GenreId = mdata.GenreId,
+                Picture = uniqueFileName,
+            };
+
+            db.Movies.Add(movie);
+            await db.SaveChangesAsync();
+            return View("MovieModel", mdata);
+        }
+
+        private string UploadedFile(IFormFile file)
+        {
+            string filename = "placeholder.png";
+            
+            if (file != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "images");
+                filename = Guid.NewGuid().ToString() + "_" + file.FileName;
+                string filePath = Path.Combine(uploadsFolder, filename);
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+            }
+            return filename;
         }
 
         public IActionResult ListAll()
@@ -52,7 +84,8 @@ namespace asp_mvc.Controllers
                  Country = m.Country,
                  Description = m.Description,
                  Restriction = m.Restriction,
-                 Id = m.Id
+                 Id = m.Id,
+                 Picture = m.Picture
              });
 
             return View("ListMovies", movies);

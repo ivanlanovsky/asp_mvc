@@ -16,7 +16,7 @@ namespace asp_mvc.Controllers
         public class GenreController : Controller
         {
 
-            private ApplicationContext db;
+            private readonly ApplicationContext db;
             public GenreController(ApplicationContext context)
             {
                 db = context;

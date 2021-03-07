@@ -61,6 +61,9 @@ namespace asp_mvc.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Picture")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Restriction")
                         .HasColumnType("int");
 
