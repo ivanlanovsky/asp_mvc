@@ -26,22 +26,23 @@
             <tbody>
                 @foreach (asp_mvc.Models.Show s in Model)
                 {
-                <tr>
-                    <td>@s.Movie.Name</td>
-                    <td>@s.Date.ToString()</td>
-                    <td>@s.Duration</td>
-                    <td>@asp_mvc.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
-                    <td>@s.Id</td>
-                    <td>
-                        <form action="~/Show/Delete/@s.Id" method="post">
-                            <input type="submit" value="Delete" />
-                        </form>
+                    <tr>
+                        <td>@s.Movie.Name</td>
+                        <td>@s.Date.ToString()</td>
+                        <td>@s.Duration</td>
+                        <td>@asp_mvc.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
+                        <td>@s.Id</td>
+                        <td>
+                            <form action="~/Show/Delete/@s.Id" method="post">
+                                <input type="submit" value="Delete" />
+                            </form>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
+        <h5><a href="~/Show/AddShow">add new</a> | <a href="~/Home/Index">home</a></h5>
     </div>
 </body>
 </html>

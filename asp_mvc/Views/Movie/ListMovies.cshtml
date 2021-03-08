@@ -29,23 +29,24 @@
             <tbody>
                 @foreach (asp_mvc.Models.Movie m in Model)
                 {
-                <tr>
-                    <td>@m.Name</td>
-                    <td>@m.Description</td>
-                    <td>@m.Genre.Name</td>
-                    <td>@m.Country</td>
-                    <td>@m.Restriction</td>
-                    <td>@m.Picture</td>
-                    <td>@m.Id</td>
-                    <td>
-                        <form action="~/Movie/Delete/@m.Id" method="post">
-                            <input type="submit" value="Delete" />
-                        </form>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>@m.Name</td>
+                        <td>@m.Description</td>
+                        <td>@m.Genre.Name</td>
+                        <td>@m.Country</td>
+                        <td>@m.Restriction</td>
+                        <td>@m.Picture</td>
+                        <td>@m.Id</td>
+                        <td>
+                            <form action="~/Movie/Delete/@m.Id" method="post">
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
+        <h5><a href="~/Movie/AddMovie">add new</a> | <a href="~/Home/Index">home</a></h5>
     </div>
 </body>
 </html>

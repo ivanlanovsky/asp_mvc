@@ -24,20 +24,21 @@
             <tbody>
                 @foreach (asp_mvc.Models.Genre g in Model)
                 {
-                <tr>
-                    <td>@g.Name</td>
-                    <td>@g.Description</td>
-                    <td>@g.Id</td>
-                    <td>
-                        <form action="~/Genre/Delete/@g.Id" method="post">
-                            <input type="submit" value="Delete" />
-                        </form>
-                    </td>
-                    
-                </tr>
+                    <tr>
+                        <td>@g.Name</td>
+                        <td>@g.Description</td>
+                        <td>@g.Id</td>
+                        <td>
+                            <form action="~/Genre/Delete/@g.Id" method="post">
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </td>
+
+                    </tr>
                 }
             </tbody>
         </table>
+        <h5><a href="~/Genre/AddGenre">add new</a> | <a href="~/Home/Index">home</a></h5>
     </div>
 </body>
 </html>
