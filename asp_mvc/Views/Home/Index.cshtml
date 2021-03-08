@@ -16,8 +16,13 @@
         <div style="display: inline-flex">
         @foreach (asp_mvc.Models.Show s in Model)
         {
+            string image = "placeholder.png";
+            if(s.Movie.Picture != null)
+            {
+                image = s.Movie.Picture;
+            }
             <div style="display:inline-flex; margin:5px">
-                <a href="~/Show/Details/@s.Id"><img src="~/images/placeholder.png" height="200" width="240" /></a>
+                <a href="~/Show/Details/@s.Id"><img src= "~/images/@image" height="200" width="240" /></a>
             </div>
         }
         </div>
@@ -30,19 +35,19 @@
             <h3>Genres: @ViewBag.counts[0]</h3>
             <a class="btn btn-primary" href="~/Genre/ListAll">List of all genres</a>
             <br>
-            <a href="~/Genre/AddNew">add new</a>
+            <a href="~/Genre/AddGenre">add new</a>
         </div>
         <div class="flex-child">
             <h3>Movies: @ViewBag.counts[1]</h3>
             <a class="btn btn-primary" href="~/Movie/ListAll">List of all movies</a>
             <br>
-            <a href="~/Movie/AddNew">add new</a>
+            <a href="~/Movie/AddMovie">add new</a>
         </div>
         <div class="flex-child">
             <h3>Shows: @ViewBag.counts[2]</h3>
             <a class="btn btn-primary" href="~/Show/ListAll">List of all shows</a>
             <br>
-            <a href="~/Show/AddNew">add new</a>
+            <a href="~/Show/AddShow">add new</a>
         </div>
 
     </div>

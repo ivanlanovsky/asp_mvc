@@ -16,7 +16,7 @@ namespace asp_mvc.Models
         [Required(ErrorMessage = "Please enter description of the genre")]
         public String Description { get; set; }
 
-        public List<Movie> Courses { get; set; } = new List<Movie>();
+        public List<Movie> Movies { get; set; } = new List<Movie>();
 
     }
 }

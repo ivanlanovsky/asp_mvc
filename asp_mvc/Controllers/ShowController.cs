@@ -33,14 +33,14 @@ namespace asp_mvc.Controllers
         }
 
         [HttpGet]
-        public IActionResult AddNew()
+        public IActionResult AddShow()
         {
             ViewBag.Movies = db.Movies.ToList<Movie>();
-            return View("ShowForm");
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Show show)
+        public async Task<IActionResult> AddShow(Show show)
         {
             if (ModelState.IsValid)
             {
@@ -48,7 +48,8 @@ namespace asp_mvc.Controllers
                 await db.SaveChangesAsync();
                 return Redirect("~/Home/Index");
             }
-            return View();
+            ViewBag.Movies = db.Movies.ToList<Movie>();
+            return View(show);
         }
 
         public IActionResult ListAll()

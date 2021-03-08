@@ -18,6 +18,7 @@ namespace asp_mvc.Models
 
         [Required(ErrorMessage = "Please select restriction age")]
         public int Restriction { get; set; }
+
         [Required(ErrorMessage = "Please enter description")]
         public String Description { get; set; }
 
@@ -28,7 +29,7 @@ namespace asp_mvc.Models
         public Genre Genre { get; set; }
 
         [Required(ErrorMessage = "Please choose profile image")]
-        [Display(Name = "Profile Picture")]
+        [Display(Name = "Picture")]
         public IFormFile Image { get; set; }
     }
 }

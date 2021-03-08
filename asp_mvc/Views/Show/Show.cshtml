@@ -10,9 +10,18 @@
     <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
 </head>
 <body>
+    @{
+        string image = "placeholder.png";
+        if (Model.Movie.Picture != null)
+        {
+            image = Model.Movie.Picture;
+        }
+    }
     <div style="justify-content:center">
-        <img src="~/images/placeholder.png" width="400" height="300" />
+        <img src="~/images/@image" width="400" height="300" />
     </div>
+
+
     <div style="max-width:80%">
         <p>Title: @Model.Movie.Name
         <p>When: @Model.Date

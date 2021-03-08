@@ -26,33 +26,36 @@ namespace asp_mvc.Controllers
 
 
         [HttpGet]
-        public ViewResult AddNew()
+        public ViewResult AddMovie()
         {
             ViewBag.Genres = db.Genres.ToList<Genre>();
-            return View("MovieForm");
+            return View();
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(MovieModel mdata)
+        
+        public async Task<IActionResult> AddMovie(MovieModel mdata)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                RedirectToAction("AddNew");
-            }
-            string uniqueFileName = UploadedFile(mdata.Image);
-            Movie movie = new Movie
-            {
-                Name = mdata.Name,
-                Country = mdata.Country,
-                Restriction = mdata.Restriction,
-                Description = mdata.Description,
-                GenreId = mdata.GenreId,
-                Picture = uniqueFileName,
-            };
+                string uniqueFileName = UploadedFile(mdata.Image);
+                Movie movie = new Movie
+                {
+                    Name = mdata.Name,
+                    Country = mdata.Country,
+                    Restriction = mdata.Restriction,
+                    Description = mdata.Description,
+                    GenreId = mdata.GenreId,
+                    Picture = uniqueFileName,
+                };
 
-            db.Movies.Add(movie);
-            await db.SaveChangesAsync();
-            return View("MovieModel", mdata);
+                db.Movies.Add(movie);
+                await db.SaveChangesAsync();
+                return Redirect("~/Home/Index");
+            }
+            ViewBag.Genres = db.Genres.ToList<Genre>();
+            return View(mdata);
+            
         }
 
         private string UploadedFile(IFormFile file)

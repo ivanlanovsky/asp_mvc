@@ -24,13 +24,13 @@ namespace asp_mvc.Controllers
 
 
             [HttpGet]
-            public IActionResult AddNew()
+            public IActionResult AddGenre()
             {
-                return View("GenreForm");
+                return View();
             }
 
             [HttpPost]
-            public async Task<IActionResult> Create(Genre genre)
+            public async Task<IActionResult> AddGenre(Genre genre)
             {
                 if (ModelState.IsValid)
                 {
@@ -38,7 +38,7 @@ namespace asp_mvc.Controllers
                     await db.SaveChangesAsync();
                     return Redirect("~/Home/Index");
                 }
-                return View();
+                return View(genre);
             }
 
             public async Task<IActionResult> ListAll()

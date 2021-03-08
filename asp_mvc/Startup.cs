@@ -31,10 +31,10 @@ namespace asp_mvc
             services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(connection));
             services.AddControllersWithViews();
-            services.AddControllersWithViews(mvcOtions =>
-            {
-                mvcOtions.EnableEndpointRouting = false;
-            });
+            //services.AddControllersWithViews(mvcOtions =>
+            //{
+            //    mvcOtions.EnableEndpointRouting = false;
+            //});
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -55,7 +55,7 @@ namespace asp_mvc
 
             app.UseStatusCodePages();
             app.UseStaticFiles();
-            app.UseMvc();
+            //app.UseMvc();
 
             app.UseRouting();
 

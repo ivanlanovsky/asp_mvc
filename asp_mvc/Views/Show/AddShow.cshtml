@@ -14,39 +14,44 @@
     <div class="panel panel-success" style="margin: 20px">
         <div class="panel-heading text-center"><h4>Add new show</h4></div>
         <div class="panel-body">
-            <form class="p-a-1" asp-action="Create" method="post">
-                <div asp-validation-summary="All"></div>
+            <form class="p-a-1" asp-action="AddShow" method="post">
                 <div class="form-group">
                     <label asp-for="Date">Show date:</label>
                     <input class="form-control" asp-for="Date" />
+                    <span asp-validation-for="Date"></span>
                 </div>
                 <div class="form-group">
                     <laЬel>Movie:</laЬel>
                     <select class="form-control" asp-for="MovieId">
                         @foreach (asp_mvc.Models.Movie m in ViewBag.Movies)
                         {
-                            <option value=@m.Id>@m.Name</option>
+                        <option value=@m.Id>@m.Name</option>
                         }
                     </select>
+                    <span asp-validation-for="MovieId"></span>
+                    </div>
+                <div class="form-group">
                     <laЬel>Hall:</laЬel>
                     <select class="form-control" asp-for="HallId">
-                        @foreach (asp_mvc.Models.Hall h in asp_mvc.Models.ExistingHalls.AllHalls)
-                        {
-                            <option value=@h.Id>@h.Name</option>
-                        }
+                    @foreach (asp_mvc.Models.Hall h in asp_mvc.Models.ExistingHalls.AllHalls)
+                    {
+                        <option value=@h.Id>@h.Name</option>
+                    }
                     </select>
+                    <span asp-validation-for="HallId"></span>
                 </div>
                 <div class="form-group">
                     <label asp-for="Duration">Show duration:</label>
                     <input class="form-control" asp-for="Duration" />
+                    <span asp-validation-for="Duration"></span>
                 </div>
-                
+
                 <div class="text-center">
                     <button class="btn btn-primary" type="submit">
                         Submit movie
                     </button>
                 </div>
-            </form>
+</form>
         </div>
     </div>
 </body>
