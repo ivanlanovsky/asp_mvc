@@ -22,7 +22,7 @@ namespace asp_mvc.Controllers
             db = context;
             webHostEnvironment = hostEnvironment;
         }
-    
+
         public ViewResult Index()
         {
             ViewBag.counts = new List<int>() { db.Genres.Count(),
@@ -30,14 +30,18 @@ namespace asp_mvc.Controllers
                                                db.Shows.Count()};
             List<Show> shows = db.Shows.ToList();
             List<Movie> movies = db.Movies.ToList();
-            foreach(Show s in shows)
+            foreach (Show s in shows)
             {
                 s.Movie = movies.Find(m => m.Id == s.MovieId);
             }
             ViewBag.imageFolderPath = Path.Combine(webHostEnvironment.WebRootPath, "images");
             return View(shows);
-        
+
         }
-        
+
+        public ViewResult About()
+        {
+            return View();
+        }
     }
 }
