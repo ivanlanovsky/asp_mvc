@@ -1,0 +1,51 @@
+﻿@model ecinema.Models.Show
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    @{
+        string image = "placeholder.png";
+        if (Model.Movie.Picture != null)
+        {
+            image = Model.Movie.Picture;
+        }
+    }
+    <div style="display:inline-flex; justify-content: center; width: 100%; padding: 20px">
+        <div style="justify-content:center; width: 40%">
+            <img src="~/images/@image" width="325" height="500" />
+        </div>
+
+
+        <div style="width: 60%">
+            <ul>
+                <li><h5>Title: @Model.Movie.Name</h5></li>
+                <li><h5>When: @Model.Date</h5></li>
+                <li><h5>Where:<a href="~/Show/Hall/@Model.HallId">@ecinema.Models.ExistingHalls.AllHalls.Find(h => h.Id == Model.HallId).Name Hall </a></h5></li>
+                <li><h5>Genre: @Model.Movie.Genre.Name</h5></li>
+                <li><h5>Restriction: @Model.Movie.Restriction+</h5></li>
+                <li><h5>Description: @Model.Movie.Description</h5></li>
+            </ul>
+
+
+
+
+
+        </div>
+
+    </div>
+    <div style="border: 1px solid blue"></div>
+    <div style="text-align: center">
+        <h4><a href="~/Home/Index">home</a></h4>
+    </div>
+
+
+</body>
+</html>

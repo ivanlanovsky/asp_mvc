@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ecinema.Models.Show>
+@{
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Shows</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-body" style="margin: 20px">
+        <h4>Here is the list of all shows</h4>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+
+                    <th>Movie</th>
+                    <th>Date</th>
+                    <th>Duration</th>
+                    <th>Hall</th>
+                    <th>Id</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ecinema.Models.Show s in Model)
+                {
+                    <tr>
+                        <td>@s.Movie.Name</td>
+                        <td>@s.Date.ToString()</td>
+                        <td>@s.Duration</td>
+                        <td>@ecinema.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
+                        <td>@s.Id</td>
+                        <td>
+                            <form action="~/Show/Delete/@s.Id" method="post">
+                                <input type="submit" value="Delete" />
+                            </form>
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h5><a href="~/Show/AddShow">add new</a> | <a href="~/Home/Index">home</a></h5>
+    </div>
+</body>
+</html>

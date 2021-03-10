@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ecinema.Models.Show>
+@{
+    Layout = "_Layout";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+    <div style="display: flex; justify-content:center">
+        <div style="overflow-x:scroll; overflow-y:hidden; white-space:nowrap; display:flex">
+            <div style="display: inline-flex">
+            @foreach (ecinema.Models.Show s in Model)
+            {
+                string image = "placeholder.png";
+                if(s.Movie.Picture != null)
+                {
+                    image = s.Movie.Picture;
+                }
+                <div style="display:inline-flex; margin:5px">
+                    <a href="~/Show/Details/@s.Id"><img src= "~/images/@image" height="300" width="200" /></a>
+                </div>
+            }
+            </div>
+
+        </div>
+    </div>
+
+
+    <div style="justify-content:center; display:flex; max-width:100%">
+        <div class="flex-child">
+            <h3>Genres: @ViewBag.counts[0]</h3>
+            <a class="btn btn-primary" href="~/Genre/ListAll">List of all genres</a>
+            <br>
+            <a href="~/Genre/AddGenre">add new</a>
+        </div>
+        <div class="flex-child">
+            <h3>Movies: @ViewBag.counts[1]</h3>
+            <a class="btn btn-primary" href="~/Movie/ListAll">List of all movies</a>
+            <br>
+            <a href="~/Movie/AddMovie">add new</a>
+        </div>
+        <div class="flex-child">
+            <h3>Shows: @ViewBag.counts[2]</h3>
+            <a class="btn btn-primary" href="~/Show/ListAll">List of all shows</a>
+            <br>
+            <a href="~/Show/AddShow">add new</a>
+        </div>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<ecinema.Models.Movie>
+@{
+    List<Genre> Genres = ViewBag.Genres;
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Movies</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.css" />
+</head>
+<body>
+    <div class="panel-body" style="margin: 20px">
+        <h4>Here is the list of all movies</h4>
+        <table class="table table-sm table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Genre</th>
+                    <th>Country</th>
+                    <th>Restriction</th>
+                    <th>Picture path</th>
+                    <th>Id</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (ecinema.Models.Movie m in Model)
+                {
+                    <tr>
+                        <td>@m.Name</td>
+                        <td>@m.Description</td>
+                        <td>@m.Genre.Name</td>
+                        <td>@m.Country</td>
+                        <td>@m.Restriction</td>
+                        <td>@m.Picture</td>
+                        <td>@m.Id</td>
+                        <td>
+                            <form action="~/Movie/Delete/@m.Id" method="post">
+                                <input type="submit" value="Delete" />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <h5><a href="~/Movie/AddMovie">add new</a> | <a href="~/Home/Index">home</a></h5>
+    </div>
+</body>
+</html>
