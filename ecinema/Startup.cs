@@ -11,15 +11,21 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ecinema.Models;
 using Microsoft.EntityFrameworkCore.Sqlite;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
+using Microsoft.AspNetCore.Identity;
 
 namespace ecinema
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IWebHostEnvironment hostEnvironment)
         {
+            webHostEnvironment = hostEnvironment;
             Configuration = configuration;
         }
+
+        IWebHostEnvironment webHostEnvironment { get; set; }
 
         public IConfiguration Configuration { get; }
 
@@ -29,14 +35,35 @@ namespace ecinema
             // получаем строку подключения из файла конфигурации
             string connection = Configuration.GetConnectionString("DefaultConnection");
 
-            services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlite(Configuration.GetConnectionString("SqLite")));
-            // добавляем контекст MobileContext в качестве сервиса в приложение
             //services.AddDbContext<ApplicationContext>(options =>
-            //    options.UseSqlServer(connection));
+            //    options.UseSqlite(Configuration.GetConnectionString("SqLite")));
+
+            services.AddDbContext<ApplicationContext>(options => 
+                options.UseNpgsql(DatabaseConnectionString)); 
+            
+
             services.AddControllersWithViews();
 
         }
+
+        private string GetHerokuConnectionString()
+        {
+            // Get the connection string from the ENV variables
+            string connectionUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+
+            // parse the connection string
+            var databaseUri = new Uri(connectionUrl);
+
+            string db = databaseUri.LocalPath.TrimStart('/');
+            string[] userInfo = databaseUri.UserInfo.Split(':', StringSplitOptions.RemoveEmptyEntries);
+
+            return $"User ID={userInfo[0]};Password={userInfo[1]};Host={databaseUri.Host};Port={databaseUri.Port};Database={db};Pooling=true;SSL Mode=Require;Trust Server Certificate=True;";
+        }
+
+        public string DatabaseConnectionString =>
+        webHostEnvironment.IsDevelopment()
+            ? Configuration.GetConnectionString("DefaultConnection")
+            : GetHerokuConnectionString();
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

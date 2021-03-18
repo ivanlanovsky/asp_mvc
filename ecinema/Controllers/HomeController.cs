@@ -25,6 +25,33 @@ namespace ecinema.Controllers
 
         public ViewResult Index()
         {
+            
+            //if (db.Genres.Count() == 0)
+            //{
+            //    db.Genres.Add(new Genre
+            //    {
+            //        Id = 1,
+            //        Name = "Comedy",
+            //        Description = "Humorous film",
+            //    }) ;
+
+            //    db.Movies.Add(new Movie
+            //    {
+            //        Name = "Megalomania",
+            //        Description = "Comedy about medieval Spain",
+            //        GenreId = db.Genres.ToList().Where(g => g.Name == "Comedy").ElementAt(0).Id,
+            //        Country = "France",
+            //        Picture = "megalomania.jpg",
+            //        Restriction = 12
+            //    });
+
+            //    db.Shows.Add(new Show
+            //    {
+            //        Date = new DateTime(1, 4, 2021),
+            //        MovieId = db.Movies.ToList().Where(g => g.Name == "Megalomania").ElementAt(0).Id,
+            //        Duration = 120
+            //    }) ;
+            //}
             ViewBag.counts = new List<int>() { db.Genres.Count(),
                                                db.Movies.Count(),
                                                db.Shows.Count()};

@@ -68,17 +68,10 @@ namespace ecinema.Controllers
             [ValidateAntiForgeryToken]
             public ActionResult Delete(int id, IFormCollection collection)
             {
-                try
-                {
                     Movie movie = db.Movies.Find(id);
                     db.Movies.Remove(movie);
                     db.SaveChanges();
                     return Redirect("~/Movie/ListAll");
-                }
-                catch
-                {
-                    return View();
-                }
             }
         }
     }

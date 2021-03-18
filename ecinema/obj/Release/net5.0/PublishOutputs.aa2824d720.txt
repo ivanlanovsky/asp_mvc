@@ -2,7 +2,10 @@ C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\ecinema.e
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\css\site.css
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\css\style.css
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\favicon.ico
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\images\7d9d0b58-9dc3-45e7-85f6-c2e2f7909641_megalomania.jpg
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\images\ddd6eb33-c3ed-4b9d-b2c8-d0e67fb1bdc6_510D6BA246L._SY445_.jpg
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\images\megalomania.jpg
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\images\placeholder.png
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\js\site.js
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
@@ -47,9 +50,13 @@ C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.EntityFrameworkCore.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.EntityFrameworkCore.Abstractions.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.EntityFrameworkCore.Relational.Design.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.EntityFrameworkCore.Sqlite.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.Extensions.DependencyInjection.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Microsoft.Extensions.DependencyModel.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Npgsql.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\SQLitePCLRaw.batteries_v2.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\SQLitePCLRaw.nativelibrary.dll
 C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\publish\SQLitePCLRaw.core.dll

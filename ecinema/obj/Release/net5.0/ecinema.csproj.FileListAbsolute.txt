@@ -82,3 +82,7 @@ C:\Users\owner\source\repos\ecinema\ecinema\obj\Release\net5.0\ecinema.dll
 C:\Users\owner\source\repos\ecinema\ecinema\obj\Release\net5.0\ref\ecinema.dll
 C:\Users\owner\source\repos\ecinema\ecinema\obj\Release\net5.0\ecinema.pdb
 C:\Users\owner\source\repos\ecinema\ecinema\obj\Release\net5.0\ecinema.genruntimeconfig.cache
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\Microsoft.EntityFrameworkCore.Relational.Design.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\Npgsql.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
+C:\Users\owner\source\repos\ecinema\ecinema\bin\Release\net5.0\Npgsql.EntityFrameworkCore.PostgreSQL.Design.dll
