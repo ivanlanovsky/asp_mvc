@@ -37,19 +37,27 @@
             <h3>Genres: @ViewBag.counts[0]</h3>
             <a class="btn btn-primary" href="~/Genre/ListAll">List of all genres</a>
             <br>
-            <a href="~/Genre/AddGenre">add new</a>
-        </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="~/Genre/AddGenre">add new</a>
+            }
+            </div>
         <div class="flex-child">
             <h3>Movies: @ViewBag.counts[1]</h3>
             <a class="btn btn-primary" href="~/Movie/ListAll">List of all movies</a>
             <br>
-            <a href="~/Movie/AddMovie">add new</a>
-        </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a href="~/Movie/AddMovie">add new</a>
+            }
+            </div>
         <div class="flex-child">
             <h3>Shows: @ViewBag.counts[2]</h3>
             <a class="btn btn-primary" href="~/Show/ListAll">List of all shows</a>
             <br>
-            <a href="~/Show/AddShow">add new</a>
+            @if (User.Identity.IsAuthenticated) { 
+                <a href="~/Show/AddShow">add new</a>
+             }
         </div>
 
     </div>

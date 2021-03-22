@@ -26,23 +26,25 @@
             <tbody>
                 @foreach (ecinema.Models.Show s in Model)
                 {
-                    <tr>
-                        <td>@s.Movie.Name</td>
-                        <td>@s.Date.ToString()</td>
-                        <td>@s.Duration</td>
-                        <td>@ecinema.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
-                        <td>@s.Id</td>
+                <tr>
+                    <td>@s.Movie.Name</td>
+                    <td>@s.Date.ToString()</td>
+                    <td>@s.Duration</td>
+                    <td>@ecinema.Models.ExistingHalls.AllHalls.Find(h => h.Id == s.HallId).Name Hall</td>
+                    <td>@s.Id</td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <td>
                             <form action="~/Show/Delete/@s.Id" method="post">
                                 <input type="submit" value="Delete" />
                             </form>
-
                         </td>
-                    </tr>
+                    }
+                </tr>
                 }
             </tbody>
         </table>
-        <h5><a href="~/Show/AddShow">add new</a> | <a href="~/Home/Index">home</a></h5>
+        <h5>@if (User.Identity.IsAuthenticated) {<a href="~/Show/AddShow">add new</a> <span>|</span> }<a href="~/Home/Index">home</a></h5>
     </div>
 </body>
 </html>

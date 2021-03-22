@@ -8,6 +8,7 @@ namespace ecinema.Models
 {
     public class ApplicationContext : DbContext
     {
+        public DbSet<User> Users { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }

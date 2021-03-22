@@ -10,10 +10,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ecinema.Models;
-using Microsoft.EntityFrameworkCore.Sqlite;
 using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Design;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ecinema
 {
@@ -39,8 +39,14 @@ namespace ecinema
             //    options.UseSqlite(Configuration.GetConnectionString("SqLite")));
 
             services.AddDbContext<ApplicationContext>(options => 
-                options.UseNpgsql(DatabaseConnectionString)); 
-            
+                options.UseNpgsql(DatabaseConnectionString));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+                .AddCookie(options => //CookieAuthenticationOptions
+                {
+                    options.LoginPath = new Microsoft.AspNetCore.Http.PathString("/Account/Login");
+                });
+
 
             services.AddControllersWithViews();
 
@@ -84,6 +90,9 @@ namespace ecinema
             app.UseStatusCodePages();
             app.UseStaticFiles();
             //app.UseMvc();
+
+            app.UseAuthentication();    // аутентификация
+            app.UseAuthorization();
 
             app.UseRouting();
 

@@ -24,21 +24,24 @@
             <tbody>
                 @foreach (ecinema.Models.Genre g in Model)
                 {
-                    <tr>
-                        <td>@g.Name</td>
-                        <td>@g.Description</td>
-                        <td>@g.Id</td>
+                <tr>
+                    <td>@g.Name</td>
+                    <td>@g.Description</td>
+                    <td>@g.Id</td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
                         <td>
                             <form action="~/Genre/Delete/@g.Id" method="post">
                                 <input type="submit" value="Delete" />
                             </form>
                         </td>
+                    }
 
-                    </tr>
+                </tr>
                 }
             </tbody>
         </table>
-        <h5><a href="~/Genre/AddGenre">add new</a> | <a href="~/Home/Index">home</a></h5>
+        <h5>@if (User.Identity.IsAuthenticated) {<a href="~/Genre/AddGenre">add new</a> <span>|</span> }<a href="~/Home/Index">home</a></h5>
     </div>
 </body>
 </html>

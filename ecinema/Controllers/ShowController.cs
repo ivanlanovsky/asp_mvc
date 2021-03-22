@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using ecinema.Models;
 using System.Diagnostics;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ecinema.Controllers
 {
@@ -33,6 +34,7 @@ namespace ecinema.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public IActionResult AddShow()
         {
             ViewBag.Movies = db.Movies.ToList<Movie>();
@@ -40,6 +42,7 @@ namespace ecinema.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddShow(Show show)
         {
             if (ModelState.IsValid)
@@ -83,6 +86,7 @@ namespace ecinema.Controllers
         // POST: ShowController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(int id, IFormCollection collection)
         {
             try
@@ -99,6 +103,7 @@ namespace ecinema.Controllers
         // POST: ShowController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             try
